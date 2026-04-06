@@ -1,0 +1,939 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>御船町5時のうたプロジェクト 企画書</title>
+<style>
+  :root {
+    --primary: #1a5632;
+    --primary-light: #2d8a4e;
+    --accent: #e8a317;
+    --accent-light: #f5c842;
+    --bg: #fafaf5;
+    --card: #ffffff;
+    --text: #2c2c2c;
+    --text-light: #666666;
+    --border: #e0e0d8;
+    --gradient-start: #1a5632;
+    --gradient-end: #2d8a4e;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: "Hiragino Kaku Gothic ProN", "Noto Sans JP", "Yu Gothic", sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.8;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ===== HERO ===== */
+  .hero {
+    background: linear-gradient(135deg, var(--gradient-start) 0%, var(--gradient-end) 100%);
+    color: #fff;
+    padding: 60px 20px 50px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: "";
+    position: absolute;
+    top: -60px; right: -60px;
+    width: 200px; height: 200px;
+    background: rgba(255,255,255,0.05);
+    border-radius: 50%;
+  }
+  .hero::after {
+    content: "";
+    position: absolute;
+    bottom: -40px; left: -40px;
+    width: 150px; height: 150px;
+    background: rgba(255,255,255,0.04);
+    border-radius: 50%;
+  }
+  .hero-badge {
+    display: inline-block;
+    background: rgba(255,255,255,0.15);
+    border: 1px solid rgba(255,255,255,0.3);
+    border-radius: 50px;
+    padding: 6px 20px;
+    font-size: 12px;
+    letter-spacing: 2px;
+    margin-bottom: 20px;
+    backdrop-filter: blur(4px);
+  }
+  .hero h1 {
+    font-size: 28px;
+    font-weight: 800;
+    line-height: 1.4;
+    margin-bottom: 8px;
+    letter-spacing: 1px;
+  }
+  .hero h1 .em {
+    color: var(--accent-light);
+    font-size: 34px;
+    display: block;
+    margin: 8px 0;
+  }
+  .hero-sub {
+    font-size: 14px;
+    opacity: 0.85;
+    margin-top: 12px;
+    line-height: 1.6;
+  }
+  .hero-meta {
+    margin-top: 24px;
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+  .hero-meta span {
+    background: rgba(255,255,255,0.12);
+    padding: 4px 14px;
+    border-radius: 20px;
+    font-size: 12px;
+    letter-spacing: 0.5px;
+  }
+
+  /* ===== CONTAINER ===== */
+  .container {
+    max-width: 640px;
+    margin: 0 auto;
+    padding: 0 16px;
+  }
+
+  /* ===== SECTION ===== */
+  .section {
+    margin: 28px 0;
+  }
+  .section-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--primary);
+    color: #fff;
+    font-size: 13px;
+    font-weight: 700;
+    padding: 6px 16px;
+    border-radius: 6px 6px 0 0;
+    letter-spacing: 1px;
+  }
+  .section-label .icon {
+    font-size: 16px;
+  }
+
+  /* ===== CARD ===== */
+  .card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 0 12px 12px 12px;
+    padding: 24px 20px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.04);
+  }
+  .card p {
+    font-size: 14px;
+    margin-bottom: 12px;
+    color: var(--text);
+  }
+  .card p:last-child { margin-bottom: 0; }
+
+  .card-alt {
+    border-radius: 12px;
+  }
+
+  /* ===== HIGHLIGHT BOX ===== */
+  .highlight-box {
+    background: linear-gradient(135deg, #fff9e6, #fff3cc);
+    border-left: 4px solid var(--accent);
+    border-radius: 0 10px 10px 0;
+    padding: 20px;
+    margin: 20px 0;
+  }
+  .highlight-box p {
+    font-size: 15px;
+    font-weight: 600;
+    color: #7a5a00;
+    line-height: 1.9;
+  }
+
+  /* ===== SNS IMPACT ===== */
+  .sns-stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    margin: 16px 0;
+  }
+  .sns-stat {
+    background: linear-gradient(135deg, #f0f7f3, #e8f5ec);
+    border-radius: 10px;
+    padding: 16px 8px;
+    text-align: center;
+  }
+  .sns-stat .num {
+    font-size: 22px;
+    font-weight: 800;
+    color: var(--primary);
+    display: block;
+  }
+  .sns-stat .unit {
+    font-size: 11px;
+    color: var(--text-light);
+    display: block;
+    margin-top: 2px;
+  }
+
+  /* ===== VOICE ===== */
+  .voice-list {
+    list-style: none;
+    margin: 16px 0 0;
+  }
+  .voice-list li {
+    position: relative;
+    padding: 12px 16px 12px 40px;
+    background: #f9f9f6;
+    border-radius: 8px;
+    margin-bottom: 8px;
+    font-size: 14px;
+    font-style: italic;
+    color: #555;
+  }
+  .voice-list li::before {
+    content: "\201C";
+    position: absolute;
+    left: 14px; top: 6px;
+    font-size: 28px;
+    color: var(--primary-light);
+    font-style: normal;
+  }
+
+  /* ===== QR ===== */
+  .qr-section {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin-top: 16px;
+  }
+  .qr-item {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    background: #f7f7f2;
+    border-radius: 10px;
+    padding: 14px;
+  }
+  .qr-item img {
+    width: 90px;
+    height: 90px;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+    flex-shrink: 0;
+  }
+  .qr-item .qr-text {
+    font-size: 13px;
+    color: var(--text-light);
+    line-height: 1.6;
+  }
+  .qr-item .qr-text strong {
+    color: var(--text);
+    display: block;
+    margin-bottom: 2px;
+  }
+
+  /* ===== FLOW ===== */
+  .flow {
+    position: relative;
+    padding-left: 28px;
+  }
+  .flow::before {
+    content: "";
+    position: absolute;
+    left: 10px;
+    top: 20px;
+    bottom: 20px;
+    width: 2px;
+    background: linear-gradient(to bottom, var(--primary), var(--accent));
+    border-radius: 2px;
+  }
+  .flow-step {
+    position: relative;
+    margin-bottom: 20px;
+    padding: 14px 16px;
+    background: #f9f9f6;
+    border-radius: 10px;
+  }
+  .flow-step:last-child { margin-bottom: 0; }
+  .flow-step::before {
+    content: "";
+    position: absolute;
+    left: -24px;
+    top: 20px;
+    width: 12px;
+    height: 12px;
+    background: var(--primary);
+    border: 3px solid #fff;
+    border-radius: 50%;
+    box-shadow: 0 0 0 2px var(--primary);
+  }
+  .flow-step .step-num {
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--primary);
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    margin-bottom: 4px;
+  }
+  .flow-step .step-title {
+    font-size: 15px;
+    font-weight: 700;
+    margin-bottom: 4px;
+  }
+  .flow-step .step-desc {
+    font-size: 13px;
+    color: var(--text-light);
+    line-height: 1.7;
+  }
+
+  /* ===== SCHEDULE TABLE ===== */
+  .schedule-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 16px 0;
+    font-size: 13px;
+  }
+  .schedule-table th {
+    background: var(--primary);
+    color: #fff;
+    padding: 10px 12px;
+    text-align: left;
+    font-weight: 600;
+    font-size: 12px;
+    letter-spacing: 0.5px;
+  }
+  .schedule-table th:first-child { border-radius: 8px 0 0 0; }
+  .schedule-table th:last-child { border-radius: 0 8px 0 0; }
+  .schedule-table td {
+    padding: 10px 12px;
+    border-bottom: 1px solid var(--border);
+    vertical-align: top;
+  }
+  .schedule-table tr:nth-child(even) td {
+    background: #f9f9f6;
+  }
+  .schedule-table tr:last-child td:first-child { border-radius: 0 0 0 8px; }
+  .schedule-table tr:last-child td:last-child { border-radius: 0 0 8px 0; }
+
+  .phase-badge {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+  }
+  .phase-1 { background: #e8f5ec; color: var(--primary); }
+  .phase-2 { background: #e6f0ff; color: #1a4d8f; }
+  .phase-3 { background: #fff3e0; color: #b36b00; }
+  .phase-4 { background: #fce4ec; color: #c62828; }
+
+  /* ===== BUDGET ===== */
+  .budget-list {
+    list-style: none;
+    margin: 16px 0;
+  }
+  .budget-list li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 0;
+    border-bottom: 1px dashed var(--border);
+    font-size: 14px;
+  }
+  .budget-list li:last-child { border-bottom: none; }
+  .budget-list .item-name {
+    flex: 1;
+  }
+  .budget-list .item-cost {
+    font-weight: 700;
+    color: var(--primary);
+    white-space: nowrap;
+  }
+  .budget-total {
+    background: var(--primary);
+    color: #fff;
+    padding: 14px 20px;
+    border-radius: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 15px;
+    font-weight: 700;
+  }
+
+  /* ===== LIST STYLE ===== */
+  .check-list {
+    list-style: none;
+    margin: 12px 0;
+  }
+  .check-list li {
+    position: relative;
+    padding: 8px 0 8px 28px;
+    font-size: 14px;
+    line-height: 1.7;
+  }
+  .check-list li::before {
+    content: "\2713";
+    position: absolute;
+    left: 0;
+    color: var(--primary);
+    font-weight: 700;
+    font-size: 16px;
+  }
+
+  /* ===== APPROVAL FLOW ===== */
+  .approval-flow {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0;
+    margin: 16px 0;
+  }
+  .approval-step {
+    background: #f0f7f3;
+    border: 2px solid var(--primary-light);
+    border-radius: 10px;
+    padding: 14px 20px;
+    text-align: center;
+    width: 100%;
+    max-width: 320px;
+  }
+  .approval-step .a-title {
+    font-weight: 700;
+    font-size: 14px;
+    color: var(--primary);
+  }
+  .approval-step .a-desc {
+    font-size: 12px;
+    color: var(--text-light);
+    margin-top: 2px;
+  }
+  .approval-arrow {
+    font-size: 20px;
+    color: var(--primary);
+    padding: 4px 0;
+  }
+
+  /* ===== FOOTER ===== */
+  .footer {
+    background: var(--primary);
+    color: #fff;
+    text-align: center;
+    padding: 40px 20px;
+    margin-top: 40px;
+  }
+  .footer p {
+    font-size: 13px;
+    opacity: 0.8;
+    line-height: 1.8;
+  }
+  .footer .org {
+    font-size: 16px;
+    font-weight: 700;
+    opacity: 1;
+    margin-bottom: 8px;
+  }
+
+  /* ===== DIVIDER ===== */
+  .divider {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin: 32px 0;
+    color: var(--text-light);
+    font-size: 12px;
+    letter-spacing: 2px;
+  }
+  .divider::before, .divider::after {
+    content: "";
+    flex: 1;
+    height: 1px;
+    background: var(--border);
+  }
+
+  /* ===== MUSIC NOTE DECORATION ===== */
+  .note-deco {
+    text-align: center;
+    font-size: 24px;
+    margin: 20px 0 10px;
+    opacity: 0.3;
+    letter-spacing: 16px;
+  }
+
+  /* ===== CONCEPT MESSAGE ===== */
+  .concept-msg {
+    text-align: center;
+    padding: 30px 20px;
+    margin: 20px 0;
+    background: linear-gradient(135deg, #f0f7f3, #e8f5ec);
+    border-radius: 16px;
+  }
+  .concept-msg .big {
+    font-size: 20px;
+    font-weight: 800;
+    color: var(--primary);
+    line-height: 1.8;
+  }
+  .concept-msg .small {
+    font-size: 13px;
+    color: var(--text-light);
+    margin-top: 12px;
+  }
+
+  /* ===== COMMENT CAROUSEL ===== */
+  .comment-carousel {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    margin: 0 -20px;
+    padding: 0 20px;
+    scrollbar-width: none;
+  }
+  .comment-carousel::-webkit-scrollbar { display: none; }
+  .comment-track {
+    display: flex;
+    gap: 16px;
+    padding: 8px 0 16px;
+  }
+  .phone-frame {
+    flex-shrink: 0;
+    width: 200px;
+    height: 420px;
+    background: #111;
+    border-radius: 28px;
+    padding: 10px 8px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.15), inset 0 0 0 2px #333;
+    position: relative;
+    overflow: hidden;
+  }
+  .phone-frame::before {
+    content: "";
+    position: absolute;
+    top: 6px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 16px;
+    background: #222;
+    border-radius: 0 0 10px 10px;
+    z-index: 2;
+  }
+  .phone-frame img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: top;
+    border-radius: 20px;
+    display: block;
+  }
+
+  /* ===== PERSON CARD ===== */
+  .person-card {
+    background: linear-gradient(135deg, #f0f7f3, #fff);
+    border: 1px solid #d4e8db;
+    border-radius: 12px;
+    padding: 20px;
+    margin: 16px 0;
+  }
+  .person-card .name {
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--primary);
+  }
+  .person-card .title {
+    font-size: 12px;
+    color: var(--text-light);
+    margin-top: 2px;
+    margin-bottom: 8px;
+  }
+  .person-card .bio {
+    font-size: 13px;
+    color: var(--text);
+    line-height: 1.7;
+  }
+</style>
+</head>
+<body>
+
+<!-- ===== HERO ===== -->
+<header class="hero">
+  <div class="hero-badge">企 画 書</div>
+  <h1>
+    午後5時、<br>御船町に響く
+    <span class="em">「御船町のうた」</span>
+    プロジェクト
+  </h1>
+  <p class="hero-sub">
+    恐竜のまち・音楽のまち 御船町から<br>
+    毎日届く、ふるさとのメロディー
+  </p>
+  <div class="hero-meta">
+    <span>御船町商工会青年部</span>
+    <span>2026年4月</span>
+  </div>
+</header>
+
+<div class="container">
+
+  <div class="note-deco">&#9835; &#9834; &#9835;</div>
+
+  <!-- ===== コンセプト ===== -->
+  <div class="concept-msg">
+    <p class="big">
+      毎日5時に、ふっと立ち止まり<br>
+      こころが休まる。<br>
+      それが「御船町のうた」
+    </p>
+    <p class="small">
+      子どもたちが歌い、町の人が紡いだ言葉が<br>
+      御船の空に響く ── そんな日常をつくりたい。
+    </p>
+  </div>
+
+  <!-- ===== 背景・発端 ===== -->
+  <div class="section">
+    <div class="section-label"><span class="icon">&#128161;</span> プロジェクトの発端</div>
+    <div class="card">
+      <p>SNSで、ある町の「5時の音楽」が大きな話題になりました。</p>
+      <p><strong>山梨県南巨摩郡富士川町</strong>が防災無線で流す町のオリジナル曲が、Instagramで取り上げられ、爆発的に拡散。</p>
+
+      <div class="sns-stats">
+        <div class="sns-stat">
+          <span class="num">317万</span>
+          <span class="unit">再生</span>
+        </div>
+        <div class="sns-stat">
+          <span class="num">1,068</span>
+          <span class="unit">コメント</span>
+        </div>
+        <div class="sns-stat">
+          <span class="num">1,666</span>
+          <span class="unit">シェア</span>
+        </div>
+      </div>
+
+      <ul class="voice-list">
+        <li>こんな町に住みたい</li>
+        <li>これを聴くために、この町にいってみたい</li>
+        <li>ここに住んでいたが、とても誇りに思う</li>
+      </ul>
+
+      <p style="margin-top: 16px; font-size: 13px; color: var(--text-light);">
+        コメント欄はポジティブな声で溢れ、「町の歌」が<strong>シビックプライド（ふるさと愛）</strong>と<strong>観光誘客</strong>の両方に大きな力を持つことが証明されました。
+      </p>
+
+      <!-- QRコード -->
+      <div class="qr-section">
+        <div class="qr-item">
+          <img src="https://api.qrserver.com/v1/create-qr-code/?size=180x180&data=https%3A%2F%2Fwww.instagram.com%2Freel%2FDQlgWXPEsQU%2F%3Figsh%3DMWJkazIxdmhpNXo3cg%3D%3D" alt="Instagram QR">
+          <div class="qr-text">
+            <strong>Instagram（話題の投稿）</strong>
+            317万再生を記録した<br>富士川町の5時の音楽<br>
+            <a href="https://www.instagram.com/reel/DQlgWXPEsQU/?igsh=MWJkazIxdmhpNXo3cg==" target="_blank" rel="noopener" style="color: var(--primary); font-size: 12px; word-break: break-all;">▶ Instagramで見る</a>
+          </div>
+        </div>
+        <div class="qr-item">
+          <img src="https://api.qrserver.com/v1/create-qr-code/?size=180x180&data=https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3D5XB-F_qHi1c" alt="YouTube QR">
+          <div class="qr-text">
+            <strong>YouTube（富士川町の歌）</strong>
+            富士川町オリジナル曲<br>フルバージョン<br>
+            <a href="https://www.youtube.com/watch?v=5XB-F_qHi1c&list=RD5XB-F_qHi1c&start_radio=1" target="_blank" rel="noopener" style="color: var(--primary); font-size: 12px; word-break: break-all;">▶ YouTubeで見る</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- コメントスクリーンショット -->
+      <p style="margin-top: 24px; font-weight: 700; font-size: 15px; color: var(--primary);">実際のコメント（一部抜粋）</p>
+      <p style="font-size: 13px; color: var(--text-light); margin-bottom: 16px;">投稿には心温まるコメントが多数寄せられています。</p>
+
+      <div class="comment-carousel">
+        <div class="comment-track">
+          <div class="phone-frame"><img src="images/IMG_5301.PNG" alt="コメント1"></div>
+          <div class="phone-frame"><img src="images/IMG_5302.PNG" alt="コメント2"></div>
+          <div class="phone-frame"><img src="images/IMG_5303.PNG" alt="コメント3"></div>
+          <div class="phone-frame"><img src="images/IMG_5304.PNG" alt="コメント4"></div>
+          <div class="phone-frame"><img src="images/IMG_5305.PNG" alt="コメント5"></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ===== 御船町だからできる ===== -->
+  <div class="section">
+    <div class="section-label"><span class="icon">&#127925;</span> 御船町だからこそ、できる</div>
+    <div class="card">
+      <p>御船町には、このプロジェクトを実現する<strong>唯一無二の環境</strong>があります。</p>
+
+      <ul class="check-list">
+        <li><strong>九州唯一の音楽大学</strong>（平成音楽大学）が立地</li>
+        <li><strong>ブルック音楽祭</strong>など、音楽イベントが根付く文化</li>
+        <li>中学・高校で<strong>音楽活動が盛ん</strong>に行われている</li>
+        <li><strong>恐竜のまち</strong>として全国的な知名度</li>
+        <li>「恐竜 × 音楽」の<strong>独自ブランド</strong>をさらに強化できる</li>
+      </ul>
+
+      <div class="highlight-box">
+        <p>
+          「恐竜のまち」に<br>
+          「音楽のまち」の新たな看板を。<br>
+          御船町の5時の空に、<br>
+          町の歌が響く日常をつくる。
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== 目的・期待効果 ===== -->
+  <div class="section">
+    <div class="section-label"><span class="icon">&#127919;</span> 目的・期待される効果</div>
+    <div class="card">
+      <ul class="check-list">
+        <li><strong>ふるさと愛の醸成</strong> ── 毎日5時に流れる歌で、住民の帰属意識と誇りを育む</li>
+        <li><strong>子どもたちの活躍の場</strong> ── 歌詞づくり・歌唱への参加で「自分たちが作った歌」という体験を</li>
+        <li><strong>町全体の一体感</strong> ── 商工会・学校・住民が協働し、世代を超えた交流を創出</li>
+        <li><strong>SNS拡散・観光促進</strong> ── 富士川町の事例同様、「行ってみたい町」としての認知拡大</li>
+        <li><strong>移住促進・定住意欲</strong> ── 「ワクワクする町、住みたくなる町」のイメージ向上</li>
+        <li><strong>音楽のまちの実証</strong> ── 九州唯一の音楽大学がある町として、日常に音楽がある暮らしを体現</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="divider">PLAN</div>
+
+  <!-- ===== プロジェクト概要 ===== -->
+  <div class="section">
+    <div class="section-label"><span class="icon">&#128220;</span> プロジェクト概要</div>
+    <div class="card">
+
+      <div class="flow">
+        <div class="flow-step">
+          <div class="step-num">STEP 1</div>
+          <div class="step-title">作曲</div>
+          <div class="step-desc">初代平成音楽大学学長 <strong>出田敬三先生</strong>に作曲を依頼。御船町の風土・文化を反映したオリジナル楽曲を制作。</div>
+        </div>
+
+        <div class="flow-step">
+          <div class="step-num">STEP 2</div>
+          <div class="step-title">歌詞づくり（町民参加型）</div>
+          <div class="step-desc">御船町商工会青年部が中心となり、<strong>町内全域から「入れたいキーワード」を募集</strong>。子どもから高齢者まで、みんなの想いを歌詞に込める。</div>
+        </div>
+
+        <div class="flow-step">
+          <div class="step-num">STEP 3</div>
+          <div class="step-title">歌入れ・演奏</div>
+          <div class="step-desc"><strong>御船高校の生徒</strong>または<strong>平成音楽大学の学生</strong>に歌唱・演奏を依頼。地元の若い力で「御船の声」をつくる。</div>
+        </div>
+
+        <div class="flow-step">
+          <div class="step-num">STEP 4</div>
+          <div class="step-title">行政協議・承認</div>
+          <div class="step-desc">危機管理防災課との協議を経て、町長・副町長・区長会での審議・承認へ。</div>
+        </div>
+
+        <div class="flow-step">
+          <div class="step-num">STEP 5</div>
+          <div class="step-title">放送開始</div>
+          <div class="step-desc">午後5時の防災無線チャイムを「御船町のうた」に変更。御船の空に、毎日歌が響く。</div>
+        </div>
+      </div>
+
+      <div class="concept-msg" style="margin-top: 24px;">
+        <p class="big" style="font-size: 16px;">
+          積極的に御船町の子どもたち・住民を巻き込み<br>
+          <span style="color: var(--accent); font-size: 18px;">「自分たちで作った音楽が流れる」</span><br>
+          という形を目指します
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== 作曲者紹介 ===== -->
+  <div class="section">
+    <div class="section-label"><span class="icon">&#127926;</span> 作曲者</div>
+    <div class="card">
+      <div class="person-card">
+        <div class="name">出田 敬三 先生</div>
+        <div class="title">初代 平成音楽大学 学長</div>
+        <div class="bio">
+          御船町に立地する九州唯一の音楽大学の初代学長として、地域の音楽文化の発展に長年貢献。御船町の風土を知り尽くした先生による作曲は、このプロジェクトに最もふさわしい選択です。
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== 承認フロー ===== -->
+  <div class="section">
+    <div class="section-label"><span class="icon">&#128196;</span> 承認の流れ（役場確認済み）</div>
+    <div class="card">
+      <p style="font-size: 13px; color: var(--text-light); margin-bottom: 16px;">担当課：<strong style="color: var(--text);">危機管理防災課</strong></p>
+
+      <div class="approval-flow">
+        <div class="approval-step">
+          <div class="a-title">企画書・音源の提出</div>
+          <div class="a-desc">楽曲・放送秒数等の概要をまとめて提出</div>
+        </div>
+        <div class="approval-arrow">&#9660;</div>
+        <div class="approval-step">
+          <div class="a-title">危機管理防災課との協議</div>
+          <div class="a-desc">担当：恵氏</div>
+        </div>
+        <div class="approval-arrow">&#9660;</div>
+        <div class="approval-step">
+          <div class="a-title">町長・副町長と役場内協議</div>
+          <div class="a-desc">庁内での合意形成</div>
+        </div>
+        <div class="approval-arrow">&#9660;</div>
+        <div class="approval-step">
+          <div class="a-title">区長会での審議</div>
+          <div class="a-desc">各地区の合意を得て正式決定</div>
+        </div>
+        <div class="approval-arrow">&#9660;</div>
+        <div class="approval-step" style="background: linear-gradient(135deg, #fff9e6, #fff3cc); border-color: var(--accent);">
+          <div class="a-title" style="color: #7a5a00;">&#127881; 放送開始</div>
+          <div class="a-desc">午後5時「御船町のうた」が響く</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="divider">SCHEDULE</div>
+
+  <!-- ===== スケジュール ===== -->
+  <div class="section">
+    <div class="section-label"><span class="icon">&#128197;</span> プロジェクトスケジュール（案）</div>
+    <div class="card">
+      <table class="schedule-table">
+        <thead>
+          <tr>
+            <th>時期</th>
+            <th>内容</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><span class="phase-badge phase-1">Phase 1</span><br>2026年<br>5月〜6月</td>
+            <td>
+              <strong>企画・承認準備</strong><br>
+              ・企画書を危機管理防災課へ提出<br>
+              ・担当者（恵氏）との協議<br>
+              ・出田先生への正式依頼
+            </td>
+          </tr>
+          <tr>
+            <td><span class="phase-badge phase-2">Phase 2</span><br>2026年<br>7月〜9月</td>
+            <td>
+              <strong>歌詞募集・楽曲制作</strong><br>
+              ・町内へキーワード募集（広報・SNS・学校配布）<br>
+              ・歌詞まとめ・出田先生による作曲<br>
+              ・町長・副町長との庁内協議
+            </td>
+          </tr>
+          <tr>
+            <td><span class="phase-badge phase-3">Phase 3</span><br>2026年<br>10月〜11月</td>
+            <td>
+              <strong>レコーディング・承認</strong><br>
+              ・御船高校 or 音大生による歌入れ・演奏<br>
+              ・音源完成・放送用編集<br>
+              ・区長会での審議・承認
+            </td>
+          </tr>
+          <tr>
+            <td><span class="phase-badge phase-4">Phase 4</span><br>2026年<br>12月〜<br>2027年1月</td>
+            <td>
+              <strong>お披露目・放送開始</strong><br>
+              ・完成披露イベントの開催<br>
+              ・防災無線での放送開始<br>
+              ・SNS発信・プロモーション
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <p style="font-size: 12px; color: var(--text-light); text-align: center;">※ スケジュールは行政協議の進捗により変動する可能性があります</p>
+    </div>
+  </div>
+
+  <!-- ===== 予算 ===== -->
+  <div class="section">
+    <div class="section-label"><span class="icon">&#128176;</span> 概算予算（案）</div>
+    <div class="card">
+      <ul class="budget-list">
+        <li>
+          <span class="item-name">作曲料（出田先生への謝礼）</span>
+          <span class="item-cost">応相談</span>
+        </li>
+        <li>
+          <span class="item-name">歌詞募集関連費（印刷・配布等）</span>
+          <span class="item-cost">約 3万円</span>
+        </li>
+        <li>
+          <span class="item-name">レコーディング費用</span>
+          <span class="item-cost">約 10万円</span>
+        </li>
+        <li>
+          <span class="item-name">音源編集・放送用マスタリング</span>
+          <span class="item-cost">約 5万円</span>
+        </li>
+        <li>
+          <span class="item-name">お披露目イベント関連費</span>
+          <span class="item-cost">約 5万円</span>
+        </li>
+        <li>
+          <span class="item-name">その他雑費（交通費・通信費等）</span>
+          <span class="item-cost">約 2万円</span>
+        </li>
+      </ul>
+      <div class="budget-total">
+        <span>合計（作曲料除く）</span>
+        <span>約 25万円</span>
+      </div>
+      <p style="font-size: 12px; color: var(--text-light); margin-top: 12px; text-align: center;">
+        ※ 財源：御船町商工会青年部 子ども事業費より支出<br>
+        ※ 作曲料は出田先生との協議の上、別途確定
+      </p>
+    </div>
+  </div>
+
+  <div class="divider">VISION</div>
+
+  <!-- ===== 最後のメッセージ ===== -->
+  <div class="concept-msg" style="margin: 28px 0;">
+    <p class="big">
+      午後5時。<br>
+      御船町に暮らす人が<br>
+      ふっと立ち止まり、<br>
+      こころが休まる。<br><br>
+      <span style="color: var(--accent);">その瞬間を、<br>
+      みんなでつくりたい。</span>
+    </p>
+    <p class="small" style="margin-top: 20px;">
+      御船町で育つ子どもたちが、いつか遠い場所で<br>
+      この歌を思い出し、「帰りたいな」と思える ──<br>
+      そんな "ふるさとの音" を、今ここから。
+    </p>
+  </div>
+
+</div>
+
+<!-- ===== FOOTER ===== -->
+<footer class="footer">
+  <p class="org">御船町商工会青年部</p>
+  <p>
+    御船町5時のうたプロジェクト 企画書<br>
+    2026年4月作成
+  </p>
+</footer>
+
+</body>
+</html>
