@@ -795,10 +795,13 @@
   }
 
   /* ===== RECRUIT SLIDE ===== */
+  .slide-body.recruit-body {
+    padding: 22px 40px 18px;
+  }
   .recruit-cols {
     display: grid;
-    grid-template-columns: 1.3fr 1fr;
-    gap: 28px;
+    grid-template-columns: 1fr 0.9fr;
+    gap: 24px;
     flex: 1;
     min-height: 0;
   }
@@ -842,30 +845,33 @@
   .model-case {
     background: #fff;
     border: 1px solid var(--border);
-    padding: 16px;
+    border-top: 3px solid var(--accent);
+    padding: 14px 16px 16px;
     display: flex;
     flex-direction: column;
     min-height: 0;
+  }
+  .model-case .mc-head {
+    display: flex;
+    align-items: baseline;
+    gap: 12px;
+    margin-bottom: 10px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid var(--border);
+    flex-wrap: wrap;
   }
   .model-case .mc-label {
     font-family: "Helvetica Neue", sans-serif;
     font-size: 11px;
     color: var(--accent);
     letter-spacing: 2px;
-    font-weight: 600;
-    margin-bottom: 6px;
+    font-weight: 700;
+    flex-shrink: 0;
   }
   .model-case .mc-title {
-    font-size: 15px;
+    font-size: 14px;
     font-weight: 700;
     color: var(--text);
-    margin-bottom: 6px;
-  }
-  .model-case .mc-desc {
-    font-size: 12px;
-    color: var(--text-light);
-    line-height: 1.7;
-    margin-bottom: 10px;
   }
   .model-case .mc-img-wrap {
     flex: 1;
@@ -874,12 +880,13 @@
     align-items: center;
     justify-content: center;
     background: #fff;
-    border: 1px solid var(--border);
     overflow: hidden;
   }
   .model-case img {
     max-width: 100%;
     max-height: 100%;
+    height: 100%;
+    width: auto;
     object-fit: contain;
     display: block;
   }
@@ -1128,7 +1135,7 @@
   }
 
   /* ===== RESPONSIVE ===== */
-  @media (max-width: 900px) {
+  @media screen and (max-width: 900px) {
     body { padding: 12px 8px; }
     .slide { aspect-ratio: auto; min-height: auto; }
     .slide-body { padding: 20px 22px; }
@@ -1505,7 +1512,7 @@
     <span class="slide-title">歌詞募集の方法</span>
     <span class="slide-tag">Public Engagement</span>
   </div>
-  <div class="slide-body">
+  <div class="slide-body recruit-body">
     <div class="recruit-cols">
       <div class="recruit-left">
         <p class="lead-text">
@@ -1537,9 +1544,10 @@
         </div>
       </div>
       <div class="model-case">
-        <div class="mc-label">REFERENCE CASE</div>
-        <div class="mc-title">富士川町「町の歌メッセージ募集」</div>
-        <div class="mc-desc">モデルとなった富士川町でも、町制施行5周年記念事業として広報誌で町民からメッセージを募集し、寄せられた言葉を作詞・作曲の参考に楽曲化した実例があります。</div>
+        <div class="mc-head">
+          <div class="mc-label">REFERENCE CASE</div>
+          <div class="mc-title">富士川町「町の歌メッセージ募集」広報誌</div>
+        </div>
         <div class="mc-img-wrap">
           <img src="images/fujikawa-magazine.png" alt="富士川町 広報誌 町の歌メッセージ募集">
         </div>
